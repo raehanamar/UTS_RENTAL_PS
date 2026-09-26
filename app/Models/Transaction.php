@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
 {
-    protected $fillable = ['customer_id', 'unit_id', 'package_id', 'tanggal', 'total_harga', 'status'];
+    protected function casts(): array
+    {
+        return [
+            'tanggal' => 'date',
+        ];
+    }
 
-    protected $casts = [
-        'tanggal' => 'date',
+    protected $fillable = [
+    'customer_id', 'unit_id', 'package_id', 'jenis_transaksi',
+    'nama_tamu', 'tanggal', 'total_harga', 'status',
     ];
-
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);

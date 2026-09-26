@@ -36,7 +36,9 @@
         <x-table :headers="['Nama', 'PS', 'Paket', 'Status']">
             @forelse ($orangBermain as $t)
                 <tr>
-                    <td class="px-4 py-3">{{ $t->customer->nama }}</td>
+                    <td class="px-4 py-3">
+                    {{ $t->jenis_transaksi === 'bawa_pulang' ? $t->customer->nama : ($t->nama_tamu ?: '- (Main di tempat)') }}
+                    </td>
                     <td class="px-4 py-3">{{ $t->unit->nama }}</td>
                     <td class="px-4 py-3">{{ $t->package->nama_paket }}</td>
                     <td class="px-4 py-3">

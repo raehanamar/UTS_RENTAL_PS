@@ -69,13 +69,24 @@ class TransactionController extends Controller
     }
 
     private function validated(Request $request): array
-    {
-        return $request->validate([
-            'customer_id' => ['required', 'exists:customers,id'],
-            'unit_id'     => ['required', 'exists:units,id'],
-            'package_id'  => ['required', 'exists:packages,id'],
-            'tanggal'     => ['required', 'date'],
-            'status'      => ['sometimes', 'nullable', 'in:berlangsung,selesai'],
-        ]);
+{
+    $data = $request->validate([
+        'jenis_transaksi' => ['required', 'in:main_ditempat,bawa_pulang'],
+        'customer_id'     => ['nullable', 'required_if:jenis_transaksi,bawa_pulang', 'exists:customers,id'],
+        'nama_tamu'       => ['nullable', 'string', 'max:100'],
+        'unit_id'         => ['required', 'exists:units,id'],
+        'package_id'      => ['required', 'exists:packages,id'],
+        'tanggal'         => ['required', 'date'],
+        'status'          => ['sometimes', 'required', 'in:berlangsung,selesai'],
+    ]);
+
+    // kalau main di tempat, pelanggan dikosongkan biar tidak ikut tersimpan
+    if ($data['jenis_transaksi'] === 'main_ditempat') {
+        $data['customer_id'] = null;
+    } else {
+        $data['nama_tamu'] = null;
     }
+
+    return $data;
+}
 }
