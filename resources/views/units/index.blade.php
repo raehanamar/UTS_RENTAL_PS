@@ -11,7 +11,7 @@
         ];
     @endphp
 
-    <x-toolbar title="Data PlayStation" subtitle="Kelola data PlayStation" :create="route('units.create')" label="Tambah PS" />
+    <x-toolbar title="Data PlayStation" subtitle="Kelola data PlayStation" :create="route('units.create')" label="Tambah PS" search-placeholder="Cari nama PS..." />
 
     <x-table :headers="['No', 'Nama PS', 'Jenis', 'Harga/Jam', 'Status', 'Aksi']">
         @forelse ($units as $unit)
