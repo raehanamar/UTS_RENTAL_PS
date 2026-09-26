@@ -10,7 +10,7 @@
         ];
     @endphp
 
-    <x-toolbar title="Data Transaksi" subtitle="Kelola data transaksi rental" :create="route('transactions.create')" label="Tambah Transaksi" search-placeholder="Cari nama pelanggan..." />
+    <x-toolbar title="Data Transaksi" :create="route('transactions.create')" label="Tambah Transaksi" search-placeholder="Cari nama pelanggan..." />
 
     <x-table :headers="['No', 'Nama Pelanggan', 'PS', 'Paket', 'Tanggal', 'Total Harga', 'Status', 'Aksi']">
         @forelse ($transactions as $t)

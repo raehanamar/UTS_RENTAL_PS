@@ -4,12 +4,11 @@
 
 @section('content')
     <h1 class="text-2xl font-bold text-slate-800">Dashboard</h1>
-    <p class="mb-6 text-sm text-slate-500">Selamat datang di MBG PLAYSTATION</p>
 
     <div class="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <x-stat-card label="Total PS" :value="$totalUnit" icon="🎮" />
         <x-stat-card label="Pelanggan" :value="$totalPelanggan" icon="👤" />
-        <x-stat-card label="Paket" :value="$totalPaket" icon="📦" />
+        <x-stat-card label="Paket" :value="$totalPaket" icon="🕹️" />
         <x-stat-card label="Transaksi" :value="$totalTransaksi" icon="🧾" />
     </div>
 

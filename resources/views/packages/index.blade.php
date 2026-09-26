@@ -3,7 +3,7 @@
 @section('title', 'Paket Rental')
 
 @section('content')
-    <x-toolbar title="Data Paket Rental" subtitle="Kelola data paket rental" :create="route('packages.create')" label="Tambah Paket" search-placeholder="Cari nama paket..." />
+    <x-toolbar title="Data Paket Rental" :create="route('packages.create')" label="Tambah Paket" search-placeholder="Cari nama paket..." />
 
     <x-table :headers="['No', 'Nama Paket', 'Durasi (Jam)', 'Harga', 'Keterangan', 'Aksi']">
         @forelse ($packages as $package)
